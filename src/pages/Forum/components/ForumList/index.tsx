@@ -1,14 +1,23 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import Text from 'components/Text';
 
 import { flex } from 'styles/flex';
-import Text from 'components/Text';
-import { useSelector } from 'react-redux';
+
 import { IRootState } from 'types/payloadTypes';
 
 function ForumList() {
+  const navigate = useNavigate();
   const { forumList } = useSelector((state: IRootState) => state.forum);
+
+  const handleForumClick = (id: number) => {
+    navigate(`/forum/${id}`);
+  };
+
   return (
     <Container>
       {forumList.length ? (
@@ -20,7 +29,7 @@ function ForumList() {
             content,
           } = forum;
           return (
-            <Forum key={`forum-${id}`}>
+            <Forum key={`forum-${id}`} onClick={() => handleForumClick(id)}>
               <Text.Large>{title}</Text.Large>
               <Text.Medium color="#697077">{content}</Text.Medium>
               <TagBox>

@@ -41,7 +41,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/forum" element={<Forum />} />
             <Route path="/write" element={<ForumWrite />} />
-            <Route path="/detail" element={<ForumDetail />} />
+            <Route path="/forum/:id" element={<ForumDetail />} />
           </Route>
           <Route path="/" element={<Login />} />
         </Routes>

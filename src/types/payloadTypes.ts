@@ -10,6 +10,7 @@ export interface IAuthState {
 export interface IForumState {
   forumList: IForumData[];
   total: number;
+  forum: IForumData;
 }
 
 export interface IUserInfo {
