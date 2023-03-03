@@ -1,4 +1,4 @@
-import { IAuth, IUserInfo } from 'types/payloadTypes';
+import { IAuthState, IUserInfo } from 'types/payloadTypes';
 
 export const GET_AUTH_USER_INFO = 'auth/GET_AUTH_USER_INFO';
 
@@ -20,7 +20,7 @@ const initialState = {
 
 type IAuthAction = {
   type: string;
-  payload: IAuth;
+  payload: IAuthState;
 };
 
 export default function reducer(state = initialState, action: IAuthAction) {
