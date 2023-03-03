@@ -5,11 +5,12 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { Button, Input } from 'components';
+import { Button, Input, Text } from 'components';
 
 import { getUserInfo } from 'redux/modules/auth';
 
 import { flex } from 'styles/flex';
+import { fontSize } from 'styles/mixins';
 
 import { validateEmail } from 'utils/regExp';
 
@@ -57,30 +58,32 @@ function Login() {
 
   return (
     <Container>
-      <Title>Willing to Explore?</Title>
-      <Description>매일매일 모험하며 제대로 배우자</Description>
-      <InputWrap>
-        <Input
+      <Text.Large weight={700}>Willing to Explore?</Text.Large>
+      <Text.Regular color="#616161">
+        매일매일 모험하며 제대로 배우자
+      </Text.Regular>
+      <Input>
+        <InputValue
           value={email}
           name="email"
           type="email"
+          textAlign="left"
           placeholder="사용자명 또는 이메일 주소"
           onChange={handleInputValue}
         />
-      </InputWrap>
-      <InputWrap>
-        <Input
+      </Input>
+      <Input>
+        <InputValue
           value={password}
           name="password"
           type="password"
+          textAlign="left"
           placeholder="비밀번호"
           onChange={handleInputValue}
         />
-      </InputWrap>
-      <FindPasswordText>비밀번호를 잊어버리셧나요?</FindPasswordText>
-      <ButtonWrap>
-        <Button onClick={handleLoginBtnClick}>로그인</Button>
-      </ButtonWrap>
+      </Input>
+      <Text.Small>비밀번호를 잊어버리셧나요?</Text.Small>
+      <LoginButton onClick={handleLoginBtnClick}>로그인</LoginButton>
     </Container>
   );
 }
@@ -90,43 +93,27 @@ export default Login;
 const Container = styled.div`
   ${flex('center', '', 'column')}
   width: 450px;
+  row-gap: 14px;
 `;
 
-const Title = styled.p`
-  font-size: 34px;
+const InputValue = styled(Input.Value)`
+  border: 2px solid #f7cf47;
+  font-size: ${fontSize.regular};
   font-weight: 700;
-  color: #000000;
-  margin-bottom: 14px;
-`;
-
-const Description = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  color: #616161;
-  margin-bottom: 16px;
-`;
-
-const InputWrap = styled.div`
-  border: 1px solid #f7cf47;
-  padding: 16px 12px;
-  width: 100%;
+  color: #777777;
   border-radius: 8px;
-  margin-bottom: 12px;
 
-  input {
-    color: #777777;
-    font-size: 18px;
+  ::placeholder {
+    font-weight: 700;
   }
 `;
 
-const FindPasswordText = styled(Description)`
-  font-size: 17px;
-`;
-
-const ButtonWrap = styled.div`
+const LoginButton = styled(Button)`
+  ${flex('center', 'center')}
   background-color: #f7cf47;
+  color: #ffffff;
+  width: 100%;
   border-radius: 8px;
-  color: #000000;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 18px;
 `;
