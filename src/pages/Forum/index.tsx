@@ -1,22 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import axios from 'axios';
 import styled from 'styled-components';
 
-import { Button, Input } from 'components';
+import { Button, SearchBar, Text } from 'components';
+
 import { flex } from 'styles/flex';
+import { useDispatch } from 'react-redux';
+import { getForumList } from 'redux/modules/forum';
+import ForumList from './components/ForumList';
 
 function Forum() {
+  const dispatch = useDispatch();
+  const [searchValue, setSearchValue] = useState('');
+
+  const fetchGetUserInfo = async () => {
+    const { data } = await axios.get(`/forum`);
+
+    dispatch(getForumList(data));
+  };
+
+  const handleSearchInputChange = (value: string) => {
+    setSearchValue(value);
+  };
+
+  useEffect(() => {
+    fetchGetUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Container>
       <Header>
-        <Title>묻고 답하기</Title>
-        <ButtonWrap>
-          <Button>새로운 질문</Button>
-        </ButtonWrap>
+        <Text.Large weight={700}>묻고 답하기</Text.Large>
+        <AddButton>새로운 질문</AddButton>
       </Header>
-      <InputWrap>
-        <Input value="asd" type="text" name="email" placeholder="검색..." />
-      </InputWrap>
+      <SearchBar
+        name="search"
+        placeholder="검색어를 입력하세요."
+        onChange={handleSearchInputChange}
+      />
+      <ForumList />
     </Container>
   );
 }
@@ -30,16 +54,10 @@ const Container = styled.div`
 
 const Header = styled.div`
   ${flex('space-between', '')}
+  margin-bottom: 24px;
 `;
 
-const Title = styled.p`
-  font-size: 34px;
-  font-weight: 700;
-  color: #000000;
-  margin-bottom: 14px;
-`;
-
-const ButtonWrap = styled.div`
+const AddButton = styled(Button)`
   ${flex('center', 'center')}
   background-color: #505FED;
   color: #ffffff;
@@ -47,11 +65,4 @@ const ButtonWrap = styled.div`
   border-radius: 8px;
   font-weight: 700;
   font-size: 18px;
-`;
-
-const InputWrap = styled.div`
-  margin-top: 26px;
-  border-radius: 8px;
-  border: 1px solid #dde1e6;
-  padding: 16px 12px;
 `;
