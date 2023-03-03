@@ -1,9 +1,15 @@
 export interface IRootState {
-  auth: IAuth;
+  auth: IAuthState;
+  forum: IForumState;
 }
 
-export interface IAuth {
+export interface IAuthState {
   user: IUserInfo;
+}
+
+export interface IForumState {
+  forumList: IForumData[];
+  total: number;
 }
 
 export interface IUserInfo {
@@ -11,4 +17,17 @@ export interface IUserInfo {
   username: string;
   password: string;
   email: string;
+}
+
+export interface IForumData {
+  id: number;
+  title: string;
+  content: string;
+  isLiked: boolean;
+  tag: ITag;
+}
+
+export interface ITag {
+  name: string;
+  color: string;
 }

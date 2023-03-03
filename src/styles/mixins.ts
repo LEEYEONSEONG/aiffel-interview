@@ -7,3 +7,10 @@ export const fitImg = css`
     object-fit: cover;
   }
 `;
+
+export const fontSize = {
+  large: '32px',
+  medium: '22px',
+  regular: '18px',
+  small: '16px',
+};
