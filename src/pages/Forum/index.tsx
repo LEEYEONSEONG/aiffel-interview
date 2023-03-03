@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import { Button, SearchBar, Text } from 'components';
+import ForumList from './components/ForumList';
+
+import { getForumList } from 'redux/modules/forum';
 
 import { flex } from 'styles/flex';
-import { useDispatch } from 'react-redux';
-import { getForumList } from 'redux/modules/forum';
-import ForumList from './components/ForumList';
 
 function Forum() {
   const dispatch = useDispatch();
