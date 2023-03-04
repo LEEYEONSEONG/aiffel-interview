@@ -1,11 +1,11 @@
 import React from 'react';
 
-import axios from 'axios';
 import styled from 'styled-components';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { BackIcon, Text } from 'components';
 
+import useDeleteForumQuery from './queries/useDeleteForumQuery';
 import useGetForumDetailQuery from './queries/useGetForumDetailQuery';
 import usePatchLikeToggleQuery from './queries/usePatchLikeToggleQuery';
 
@@ -13,7 +13,6 @@ import { flex } from 'styles/flex';
 import { fitImg } from 'styles/mixins';
 
 import { deleteIcon, likeIcon, likeIconActive } from 'assets';
-import useDeleteForumQuery from './queries/useDeleteForumQuery';
 
 function ForumDetail() {
   const { id } = useParams() as { id: string };
@@ -60,10 +59,10 @@ function ForumDetail() {
 export default ForumDetail;
 
 const Forum = styled.div`
-  margin-top: 120px;
-  width: 700px;
+  margin: 40px 0;
+  width: 600px;
   ${flex('', '', 'column')}
-  row-gap: 14px;
+  row-gap: 34px;
 `;
 
 const TagBox = styled.div`
@@ -93,8 +92,10 @@ const LikeIcon = styled.div`
   ${fitImg}
   width: 25px;
   height: 25px;
+  cursor: pointer;
 `;
 
 const DeleteIcon = styled(LikeIcon)`
   margin-left: 12px;
+  cursor: pointer;
 `;

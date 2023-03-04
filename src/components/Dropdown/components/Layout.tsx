@@ -1,13 +1,14 @@
 import { HTMLAttributes, ReactNode } from 'react';
+
 import styled from 'styled-components';
+
 import { flex } from 'styles/flex';
 
 interface ILayoutProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-function Layout(props: ILayoutProps) {
-  const { children, ...restProps } = props;
+function Layout({ children, ...restProps }: ILayoutProps) {
   return <Container {...restProps}>{children}</Container>;
 }
 

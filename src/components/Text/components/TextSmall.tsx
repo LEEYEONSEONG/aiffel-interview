@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import styled from 'styled-components';
 
 import { fontSize } from 'styles/mixins';
@@ -9,9 +10,12 @@ interface ITextSmall {
   color?: string;
 }
 
-function TextSmall(props: ITextSmall) {
-  const { children, weight = 300, color = '#191919', ...restProps } = props;
-
+function TextSmall({
+  children,
+  weight = 300,
+  color = '#191919',
+  ...restProps
+}: ITextSmall) {
   return (
     <Text color={color} weight={weight} {...restProps}>
       {children}

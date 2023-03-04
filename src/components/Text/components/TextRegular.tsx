@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
+
 import styled from 'styled-components';
+
 import { fontSize } from 'styles/mixins';
 interface ITextRegular {
   children: ReactNode;
@@ -7,9 +9,12 @@ interface ITextRegular {
   color?: string;
 }
 
-function TextRegular(props: ITextRegular) {
-  const { children, weight = 400, color = '#191919', ...restProps } = props;
-
+function TextRegular({
+  children,
+  weight = 400,
+  color = '#191919',
+  ...restProps
+}: ITextRegular) {
   return (
     <Text color={color} weight={weight} {...restProps}>
       {children}

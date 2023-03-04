@@ -1,8 +1,8 @@
-import React from 'react';
-
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import Text from 'components/Text';
 
 import { aiffelLogo, profile } from 'assets';
 
@@ -24,7 +24,7 @@ function Header() {
         <img alt="logo" src={aiffelLogo} />
       </Logo>
       <InfoWrap onClick={() => navigate('/profile')}>
-        <Name>{username}</Name>
+        <Text.Regular>{username}</Text.Regular>
         <Profile>
           <img alt="profile" src={profile} />
         </Profile>
@@ -36,22 +36,21 @@ function Header() {
 export default Header;
 
 const Container = styled.div`
-  max-width: 1200px;
-  height: 80px;
+  max-width: 900px;
+  height: 50px;
   margin: 0 auto;
   ${flex('space-between', 'center')}
 `;
 
 const Logo = styled.div`
   ${fitImg}
-  width: 140px;
-  height: 30px;
+  width: 80px;
 `;
 
 const Profile = styled.div`
   ${fitImg}
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  margin-left: 12px;
   img {
     border-radius: 25px;
   }
@@ -60,10 +59,7 @@ const Profile = styled.div`
 const InfoWrap = styled.div`
   ${flex('', 'center')}
   cursor: pointer;
-`;
-
-const Name = styled.p`
-  font-size: 24px;
-  font-weight: 400;
-  margin-right: 12px;
+  :hover {
+    opacity: 0.5;
+  }
 `;

@@ -3,11 +3,11 @@ import { MouseEvent } from 'react';
 import styled, { css } from 'styled-components';
 
 import Input from 'components/Input';
+
 import { selectIcon } from 'assets';
 
 interface ISelectInputProps {
   isSelect: boolean;
-  placeholder?: string;
   title: string;
   value: string;
   onClick: (e: MouseEvent<HTMLDivElement>) => void;

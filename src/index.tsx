@@ -13,7 +13,14 @@ import GlobalStyle from 'styles/GlobalStyle';
 
 const store = createStore(rootReducer);
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // forum search 이후 window focus시 data 불러오는 이슈로 인한 옵션 추기
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

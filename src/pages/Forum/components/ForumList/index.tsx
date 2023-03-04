@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -30,8 +28,8 @@ function ForumList() {
           } = forum;
           return (
             <Forum key={`forum-${id}`} onClick={() => handleForumClick(id)}>
-              <Text.Large>{title}</Text.Large>
-              <Text.Medium color="#697077">{content}</Text.Medium>
+              <Text.Medium>{title}</Text.Medium>
+              <Text.Regular color="#697077">{content}</Text.Regular>
               <TagBox>
                 <Tag color={color}>{name}</Tag>
               </TagBox>
@@ -39,7 +37,9 @@ function ForumList() {
           );
         })
       ) : (
-        <Text.Medium>데이터가 없습니다.</Text.Medium>
+        <EmptyContainer>
+          <Text.Medium>질문 목록이 없습니다</Text.Medium>
+        </EmptyContainer>
       )}
     </Container>
   );
@@ -48,13 +48,13 @@ function ForumList() {
 export default ForumList;
 
 const Container = styled.div`
-  margin-top: 60px;
-  padding-top: 20px;
+  margin-top: 35px;
+  padding-top: 25px;
   border-top: 1px solid #c0c0c0;
 `;
 
 const Forum = styled.div`
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   row-gap: 14px;
@@ -84,4 +84,11 @@ const Tag = styled.div<{ color: string }>`
   border-radius: 9px;
   color: #ffffff;
   cursor: pointer;
+  font-size: 12px;
+`;
+
+const EmptyContainer = styled.div`
+  ${flex('center', 'center')};
+  width: 100%;
+  height: 700px;
 `;

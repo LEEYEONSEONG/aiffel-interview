@@ -1,4 +1,4 @@
-export const formatPageArray = (count: number, limit: number = 5) => {
+const formatPageArray = (count: number, limit: number = 5) => {
   const pages = [];
   const math = Math.ceil(count / limit);
   for (let i = 1; i <= math; i++) {
@@ -6,3 +6,5 @@ export const formatPageArray = (count: number, limit: number = 5) => {
   }
   return pages;
 };
+
+export default formatPageArray;

@@ -1,10 +1,4 @@
-import React, {
-  ChangeEvent,
-  MouseEvent,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
+import { ChangeEvent, MouseEvent, useCallback, useMemo, useState } from 'react';
 
 import styled, { css } from 'styled-components';
 
@@ -45,7 +39,7 @@ function ForumWrite() {
   );
 
   const handleInputValue = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
 
       setInputValue((prev) => ({ ...prev, [name]: value }));
@@ -129,8 +123,8 @@ export default ForumWrite;
 
 const Container = styled.div`
   ${flex('', '', 'column')}
-  width: 700px;
-  margin-top: 120px;
+  width: 600px;
+  margin-top: 40px;
   row-gap: 35px;
 `;
 

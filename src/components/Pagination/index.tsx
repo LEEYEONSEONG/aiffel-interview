@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import styled, { css } from 'styled-components';
+
 import { Button } from 'components';
 
-import { formatPageArray } from 'utils/formatPageArray';
+import formatPageArray from 'utils/formatPageArray';
 
 interface PaginationProps {
   currentPage: number;

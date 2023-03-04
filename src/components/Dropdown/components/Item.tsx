@@ -1,6 +1,8 @@
-import Text from 'components/Text';
 import { HTMLAttributes, ReactNode, MouseEvent } from 'react';
+
 import styled, { css } from 'styled-components';
+
+import Text from 'components/Text';
 
 interface IItemProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode;
@@ -9,8 +11,7 @@ interface IItemProps extends HTMLAttributes<HTMLLIElement> {
   onClick: (e: MouseEvent<HTMLLIElement>) => void;
 }
 
-function Item(props: IItemProps) {
-  const { children, ...restProps } = props;
+function Item({ children, ...restProps }: IItemProps) {
   return (
     <Container {...restProps}>
       <Text.Regular weight={300}>{children}</Text.Regular>

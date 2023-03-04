@@ -4,18 +4,19 @@ import styled from 'styled-components';
 
 import { Button, Input, Text } from 'components';
 
+import useLoginQuery from './queries/useLoginQuery';
+
+import validateEmail from 'utils/regExp';
+
 import { flex } from 'styles/flex';
 import { fontSize } from 'styles/mixins';
-
-import { validateEmail } from 'utils/regExp';
-import useLoginQuery from './queries/useLoginQuery';
 
 function Login() {
   const { mutate: login } = useLoginQuery();
 
   const [inputValue, setInputValue] = useState({
-    email: 'we.want.u@aiffel.com',
-    password: 'passpassplz',
+    email: '',
+    password: '',
   });
 
   const { email, password } = inputValue;
@@ -74,18 +75,17 @@ export default Login;
 const Container = styled.div`
   ${flex('center', '', 'column')}
   width: 450px;
+  height: 100vh;
   row-gap: 14px;
 `;
 
 const InputValue = styled(Input.Value)`
   border: 2px solid #f7cf47;
-  font-size: ${fontSize.regular};
-  font-weight: 700;
   color: #777777;
   border-radius: 8px;
 
   ::placeholder {
-    font-weight: 700;
+    font-weight: 300;
   }
 `;
 
