@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -40,6 +40,7 @@ function Forum() {
 
   useEffect(() => {
     dispatch(getSearchList(searchValue));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   return (

@@ -5,4 +5,4 @@ const validateEmail = (email: string) => {
   );
 };
 
-export { validateEmail };
+export default validateEmail;

@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
+
 import styled from 'styled-components';
+
 import { fontSize } from 'styles/mixins';
 interface ITextMedium {
   children: ReactNode;

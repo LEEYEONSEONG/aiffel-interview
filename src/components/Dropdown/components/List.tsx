@@ -1,5 +1,7 @@
 import { HTMLAttributes, ReactNode } from 'react';
+
 import styled from 'styled-components';
+
 import { flex } from 'styles/flex';
 
 interface IListProps extends HTMLAttributes<HTMLUListElement> {
@@ -7,8 +9,7 @@ interface IListProps extends HTMLAttributes<HTMLUListElement> {
   isOpen: boolean;
 }
 
-function List(props: IListProps) {
-  const { isOpen, children, ...restProps } = props;
+function List({ isOpen, children, ...restProps }: IListProps) {
   return isOpen ? <Container {...restProps}>{children}</Container> : null;
 }
 

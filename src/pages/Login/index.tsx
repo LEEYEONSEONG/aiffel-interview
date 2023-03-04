@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 import { Button, Input, Text } from 'components';
 
+import useLoginQuery from './queries/useLoginQuery';
+
+import validateEmail from 'utils/regExp';
+
 import { flex } from 'styles/flex';
 import { fontSize } from 'styles/mixins';
-
-import { validateEmail } from 'utils/regExp';
-import useLoginQuery from './queries/useLoginQuery';
 
 function Login() {
   const { mutate: login } = useLoginQuery();

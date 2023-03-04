@@ -4,8 +4,7 @@ interface ITriggerProps {
   children: ReactNode;
 }
 
-function Trigger(props: ITriggerProps) {
-  const { children, ...restProps } = props;
+function Trigger({ children, ...restProps }: ITriggerProps) {
   return <div {...restProps}>{children}</div>;
 }
 

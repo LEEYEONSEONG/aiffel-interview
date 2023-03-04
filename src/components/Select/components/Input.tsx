@@ -3,6 +3,7 @@ import { MouseEvent } from 'react';
 import styled, { css } from 'styled-components';
 
 import Input from 'components/Input';
+
 import { selectIcon } from 'assets';
 
 interface ISelectInputProps {

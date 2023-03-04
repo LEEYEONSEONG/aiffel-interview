@@ -1,8 +1,10 @@
 import { useQuery } from 'react-query';
 import axios, { AxiosError } from 'axios';
-import { IForumData } from 'types/payloadTypes';
 import { useDispatch } from 'react-redux';
+
 import { getForumList } from 'redux/modules/forum';
+
+import { IForumData } from 'types/payloadTypes';
 
 export const fetchForumList = async () => {
   const { data } = await axios.get(`/forum`);

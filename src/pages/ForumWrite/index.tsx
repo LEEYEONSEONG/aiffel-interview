@@ -1,10 +1,4 @@
-import React, {
-  ChangeEvent,
-  MouseEvent,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
+import { ChangeEvent, MouseEvent, useCallback, useMemo, useState } from 'react';
 
 import styled, { css } from 'styled-components';
 
@@ -45,7 +39,7 @@ function ForumWrite() {
   );
 
   const handleInputValue = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
 
       setInputValue((prev) => ({ ...prev, [name]: value }));

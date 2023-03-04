@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import styled from 'styled-components';
 
 import { fontSize } from 'styles/mixins';
@@ -9,9 +10,12 @@ interface ITextLarge {
   color?: string;
 }
 
-function TextLarge(props: ITextLarge) {
-  const { children, weight = 500, color = '#191919', ...restProps } = props;
-
+function TextLarge({
+  children,
+  weight = 500,
+  color = '#191919',
+  ...restProps
+}: ITextLarge) {
   return (
     <Text color={color} weight={weight} {...restProps}>
       {children}
