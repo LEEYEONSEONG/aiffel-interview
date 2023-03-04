@@ -15,8 +15,8 @@ function Login() {
   const { mutate: login } = useLoginQuery();
 
   const [inputValue, setInputValue] = useState({
-    email: 'we.want.u@aiffel.com',
-    password: 'passpassplz',
+    email: '',
+    password: '',
   });
 
   const { email, password } = inputValue;
@@ -81,13 +81,11 @@ const Container = styled.div`
 
 const InputValue = styled(Input.Value)`
   border: 2px solid #f7cf47;
-  font-size: ${fontSize.regular};
-  font-weight: 700;
   color: #777777;
   border-radius: 8px;
 
   ::placeholder {
-    font-weight: 700;
+    font-weight: 300;
   }
 `;
 
