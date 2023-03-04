@@ -74,6 +74,7 @@ export default Login;
 const Container = styled.div`
   ${flex('center', '', 'column')}
   width: 450px;
+  height: 100vh;
   row-gap: 14px;
 `;
 
