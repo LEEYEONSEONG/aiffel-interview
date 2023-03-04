@@ -6,11 +6,12 @@ import { flex } from 'styles/flex';
 
 interface IButtonPropTypes extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  disabled?: boolean;
 }
 
-function Button({ children, ...restProps }: IButtonPropTypes) {
+function Button({ children, disabled, ...restProps }: IButtonPropTypes) {
   return (
-    <ButtonStyled type="button" {...restProps}>
+    <ButtonStyled type="button" disabled={disabled} {...restProps}>
       {children}
     </ButtonStyled>
   );
