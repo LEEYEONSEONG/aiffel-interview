@@ -11,5 +11,4 @@ export default Layout;
 
 const Container = styled.div`
   ${flex('center', '')};
-  height: 100vh;
 `;
