@@ -44,8 +44,8 @@ npm run start
 
 // json-server 실행
 
-npm install global json-server
 cd json-server-test
+npm install global json-server
 npm start
 ```
 
