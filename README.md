@@ -165,7 +165,7 @@ Jira를 이용해 할 일을 관리했습니다.
 # 사용한 기술 스택
 
 - 클라이언트 상태는 redux, 서버 상태는 react-query로 관리했습니다.
-- json-server 를 활용하여 dummy data를 관리했습니다.
+- json-server 를 활용하여 dummy server를 활용하였습니다.
 
 ```
 
