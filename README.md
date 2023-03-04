@@ -1,46 +1,259 @@
-# Getting Started with Create React App
+# 프로젝트 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 개발 인원 : 1인 (이연성)
+- 개발 기간 : 22.03.02 ~ 03.05 (3일)
 
-## Available Scripts
+<br />
 
-In the project directory, you can run:
+[구현한 화면]
 
-### `npm start`
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/68770086/222915463-645e2834-1d9d-4ea0-b8ba-f6966e196fa4.png">
+<img width="303" alt="image" src="https://user-images.githubusercontent.com/68770086/222915489-1357a46b-d641-4484-b425-c22f95d92c8b.png">
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p align="center">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/68770086/222915585-3ccd38b6-3f95-405a-b8a1-1fc74364afc4.jpg">
+</p>
 
-### `npm test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 선정 이유
 
-### `npm run build`
+- Select, Dropdown , Text, Input, TextArea 등 컴포넌트 재사용화
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 프로젝트 설치 및 실행 방법
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```typescript
+// client 실행
 
-### `npm run eject`
+npm install
+npm run start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+// json-server 실행
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm install global json-server
+cd json-server-test
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# 프로젝트 관리
 
-## Learn More
+Jira를 이용해 할 일을 관리했습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="center">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/68770086/222915884-60d790a7-2368-4d77-9733-b0fd38651fcd.jpg">
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br />
+
+# 프로젝트 구조
+
+```
+├── json-server-test
+├── public
+├── src
+│   ├── assets
+│   │   ├── ic-active-like.png
+│   │   ├── ...
+│   │   └── index.ts
+│   ├── components
+│   │   ├── BackIcon
+│   │   │   └── index.tsx
+│   │   ├── Button
+│   │   │   └── index.tsx
+│   │   ├── Dropdown
+│   │   │   ├── components
+│   │   │   │   ├── Item.tsx
+│   │   │   │   ├── Layout.tsx
+│   │   │   │   ├── List.tsx
+│   │   │   │   └── Trigger.tsx
+│   │   │   └── index.tsx
+│   │   ├── Header
+│   │   │   └── index.tsx
+│   │   ├── Input
+│   │   │   ├── components
+│   │   │   │   ├── Layout.tsx
+│   │   │   │   ├── Right.tsx
+│   │   │   │   └── Value.tsx
+│   │   │   └── index.tsx
+│   │   ├── Label
+│   │   │   └── index.tsx
+│   │   ├── Layout
+│   │   │   └── index.tsx
+│   │   ├── Pagination
+│   │   │   └── index.tsx
+│   │   ├── SearchBar
+│   │   │   └── index.tsx
+│   │   ├── Select
+│   │   │   ├── components
+│   │   │   │   ├── Input.tsx
+│   │   │   │   └── Layout.tsx
+│   │   │   └── index.tsx
+│   │   ├── Text
+│   │   │   ├── components
+│   │   │   │   ├── TextLarge.tsx
+│   │   │   │   ├── TextLayout.tsx
+│   │   │   │   ├── TextMedium.tsx
+│   │   │   │   ├── TextRegular.tsx
+│   │   │   │   └── TextSmall.tsx
+│   │   │   └── index.tsx
+│   │   ├── TextArea
+│   │   │   ├── components
+│   │   │   │   ├── Layout.tsx
+│   │   │   │   └── Value.tsx
+│   │   │   └── index.tsx
+│   │   └── index.ts
+│   ├── pages
+│   │   ├── Forum
+│   │   │   ├── components
+│   │   │   │   └── ForumList
+│   │   │   │       └── index.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── queries
+│   │   │       ├── useGetForumListQuery.ts
+│   │   │       └── useGetPageListQuery.ts
+│   │   ├── ForumDetail
+│   │   │   ├── index.tsx
+│   │   │   └── queries
+│   │   │       ├── useDeleteForumQuery.ts
+│   │   │       ├── useGetForumDetailQuery.ts
+│   │   │       └── usePatchLikeToggleQuery.ts
+│   │   ├── ForumWrite
+│   │   │   ├── index.tsx
+│   │   │   └── queries
+│   │   │       └── usePostForumQuery.ts
+│   │   ├── Login
+│   │   │   ├── index.tsx
+│   │   │   └── queries
+│   │   │       └── useLoginQuery.ts
+│   │   └── index.ts
+│   ├── redux
+│   │   └── modules
+│   │       ├── auth.ts
+│   │       ├── forum.ts
+│   │       └── index.ts
+│   ├── styles
+│   │   ├── GlobalStyle.ts
+│   │   ├── flex.ts
+│   │   └── mixins.ts
+│   ├── types
+│   │   ├── images.d.ts
+│   │   └── payloadTypes.ts
+│   └── utils
+│   │   ├── formatPageArray.ts
+│   │   └── regExp.ts
+│   │
+│   ├── index.tsx
+│   └── Routes.tsx
+├── package-lock.json
+├── package.json
+└── tsconfig.json
+
+
+```
+
+</br>
+
+# 사용한 기술 스택
+
+- 클라이언트 상태는 redux, 서버 상태는 react-query로 관리했습니다.
+- json-server 를 활용하여 mummy data를 관리했습니다.
+
+```
+
+- React, Typescript
+- 상태 관리 : redux, react-query
+- 스타일 : styled-components
+- 기타 라이브러리 : json-server, react-route-dom 등
+
+```
+
+<br />
+
+# 컴포넌트를 만들 때 고려한 내용
+
+공통 컴포넌트를 만들 때 `합성 컴포넌트 패턴`을 활용
+
+- 서브 컴포넌트로 분해한 후, 필요한 것만 조합해서 사용
+
+```typescript
+// component/Input/index.ts
+
+const Input = Object.assign(Layout, {
+  Label,
+  Value,
+  Right,
+});
+
+export default Input;
+
+--------------------------------------------
+
+// component/Select/Value
+
+function SelectInput({ isSelect, onClick, ...restProps }: ISelectInputProps) {
+  return (
+    <Input title={restProps.title} onClick={onClick}>
+      <Input.Value readOnly {...restProps} />
+      <Input.Right>
+        <Arrow isSelect={isSelect}>
+          <img alt="arrow down" src={selectIcon} />
+        </Arrow>
+      </Input.Right>
+    </Input>
+  );
+}
+
+export default SelectInput;
+```
+
+<br />
+
+# 구현 사항
+
+## 1. Private Route
+
+- 로그인 상태에 따른 페이지 권환 기능
+- 로그인 시 유저 정보 전역 상태 관리
+
+<br />
+
+## 2. Search & Pagination 기능
+
+- Redux client store 사용 ( filteredList 및 list state 관리)
+- searchBar component 생성 후 최적화 input value debounce 적용
+- pagination component 생성 및 검색에 따른 pagination 기능 적용
+
+<p align="center">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/68770086/222916618-f7667378-1094-48dc-9528-cf3178b0237a.gif">
+</p>
+
+<br />
+
+## 3. 질문 등록
+
+- 공통 Select , Dropdown Component 구현
+- 등록하기 버튼 `validation`
+
+<p align="center">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/68770086/222917466-5867f8c5-b789-4bf2-beeb-7b7a4be42796.gif">
+</p>
+
+<br />
+
+## 4. 좋아요 및 삭제 기능
+
+- json-server 활용 좋아요 및 삭제 기능 구현
+
+<p align="center">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/68770086/222917354-477d6d93-3a82-49e7-9c51-4c10ed3dabec.gif">
+</p>
+
+<br />
