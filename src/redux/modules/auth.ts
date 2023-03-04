@@ -16,6 +16,7 @@ const initialState = {
     password: '',
     username: '',
   },
+  token: '',
 };
 
 type IAuthAction = {
@@ -30,6 +31,7 @@ export default function reducer(state = initialState, action: IAuthAction) {
       return {
         ...state,
         user,
+        token: 'aiffel',
       };
     default:
       return state;

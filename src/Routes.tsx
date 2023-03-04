@@ -17,17 +17,19 @@ import { IRootState } from 'types/payloadTypes';
 const PrivateRoute = () => {
   const {
     user: { username },
+    token,
   } = useSelector((state: IRootState) => state.auth);
 
-  return username ? <Outlet /> : <Navigate to="/" />;
+  return username && token ? <Outlet /> : <Navigate to="/" />;
 };
 
 const CheckHeader = () => {
   const {
     user: { username },
+    token,
   } = useSelector((state: IRootState) => state.auth);
 
-  return username ? <Header /> : <div />;
+  return username && token ? <Header /> : <div />;
 };
 
 const ConditionalHeader = CheckHeader;

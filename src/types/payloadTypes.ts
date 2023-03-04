@@ -5,12 +5,12 @@ export interface IRootState {
 
 export interface IAuthState {
   user: IUserInfo;
+  token: string;
 }
 
 export interface IForumState {
   forumList: IForumData[];
   total: number;
-  forum: IForumData;
 }
 
 export interface IUserInfo {
