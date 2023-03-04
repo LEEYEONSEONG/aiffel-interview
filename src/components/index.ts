@@ -8,3 +8,4 @@ export { default as BackIcon } from './BackIcon';
 export { default as Label } from './Label';
 export { default as Select } from './Select';
 export { default as Dropdown } from './Dropdown';
+export { default as TextArea } from './TextArea';
