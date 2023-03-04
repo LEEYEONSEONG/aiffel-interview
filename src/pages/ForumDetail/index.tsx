@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Button, Text } from 'components';
+import { BackIcon, Text } from 'components';
 import styled from 'styled-components';
 
 import { getForumDetail } from 'redux/modules/forum';
@@ -19,6 +19,7 @@ function ForumDetail() {
   const { id } = useParams() as { id: string };
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { forum } = useSelector((state: IRootState) => state.forum);
   const {
     title,
@@ -59,7 +60,7 @@ function ForumDetail() {
 
   return (
     <Forum>
-      <BackButton onClick={() => navigate('/forum')}>뒤로가기</BackButton>
+      <BackIcon path="/forum" />
       <Text.Large>{title}</Text.Large>
       <TagBox>
         <Tag color={color}>{name}</Tag>
@@ -79,15 +80,6 @@ function ForumDetail() {
 
 export default ForumDetail;
 
-const BackButton = styled(Button)`
-  background: #dde1e6;
-  border-radius: 8px;
-  width: 70px;
-  color: #ffffff;
-  height: 40px;
-  margin-bottom: 40px;
-`;
-
 const Forum = styled.div`
   margin-top: 120px;
   width: 700px;
@@ -100,6 +92,9 @@ const TagBox = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   overflow: auto;
+  border-bottom: 1px solid #dde1e6;
+  padding-bottom: 20px;
+  margin-bottom: 15px;
 `;
 
 const Tag = styled.div<{ color: string }>`

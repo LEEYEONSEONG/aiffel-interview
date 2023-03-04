@@ -12,22 +12,20 @@ interface IValueProps extends HTMLAttributes<HTMLInputElement> {
   value: string;
 }
 
-function Value(props: IValueProps) {
-  const { type = 'text', textAlign = 'center', ...restProps } = props;
-  return <StyledInput textAlign={textAlign} type={type} {...restProps} />;
+function Value({
+  type = 'text',
+  textAlign = 'center',
+  ...restProps
+}: IValueProps) {
+  return <InputValue textAlign={textAlign} type={type} {...restProps} />;
 }
 
 export default Value;
 
-const StyledInput = styled.input<Partial<IValueProps>>`
+const InputValue = styled.input<Partial<IValueProps>>`
   width: 100%;
   padding: 16px 12px;
   color: #777777;
   text-align: ${(props) => props.textAlign};
   font-size: ${fontSize.regular};
-  font-weight: 300;
-
-  ::placeholder {
-    font-weight: 300;
-  }
 `;

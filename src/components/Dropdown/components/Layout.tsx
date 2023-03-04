@@ -6,7 +6,8 @@ interface ILayoutProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-function Layout({ children, ...restProps }: ILayoutProps) {
+function Layout(props: ILayoutProps) {
+  const { children, ...restProps } = props;
   return <Container {...restProps}>{children}</Container>;
 }
 
@@ -15,6 +16,4 @@ export default Layout;
 const Container = styled.div`
   ${flex('', '', 'column')}
   position: relative;
-  width: 100%;
-  row-gap: 15px;
 `;

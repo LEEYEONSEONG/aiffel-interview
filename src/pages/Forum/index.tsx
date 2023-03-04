@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, SearchBar, Text } from 'components';
 import ForumList from './components/ForumList';
@@ -13,6 +14,7 @@ import { flex } from 'styles/flex';
 
 function Forum() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
 
   const fetchGetUserInfo = async () => {
@@ -25,6 +27,10 @@ function Forum() {
     setSearchValue(value);
   };
 
+  const handleAddBtnClick = () => {
+    navigate('/write');
+  };
+
   useEffect(() => {
     fetchGetUserInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +40,7 @@ function Forum() {
     <Container>
       <Header>
         <Text.Large weight={700}>묻고 답하기</Text.Large>
-        <AddButton>새로운 질문</AddButton>
+        <AddButton onClick={() => handleAddBtnClick()}>새로운 질문</AddButton>
       </Header>
       <SearchBar
         name="search"
