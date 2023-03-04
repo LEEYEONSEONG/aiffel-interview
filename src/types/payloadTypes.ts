@@ -32,3 +32,14 @@ export interface ITag {
   name: string;
   color: string;
 }
+
+export interface INewForumParams {
+  title: string;
+  content: string;
+  selectedOption: string;
+}
+
+export interface ILikeForumParams {
+  id: string;
+  isLiked: boolean;
+}
