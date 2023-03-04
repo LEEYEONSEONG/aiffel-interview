@@ -17,8 +17,17 @@ const Pagination = ({ currentPage, onGetPage, total }: PaginationProps) => {
 
   useEffect(() => {
     const paginationArray = formatPageArray(total);
+    const length = paginationArray.length;
 
-    setDisplayArray(paginationArray);
+    if (currentPage <= 5) {
+      setDisplayArray(paginationArray.slice(0, 10));
+      return;
+    }
+
+    if (length - currentPage <= 6) {
+      setDisplayArray(paginationArray.slice(length - 10, length));
+      return;
+    }
   }, [currentPage, total]);
 
   return (
