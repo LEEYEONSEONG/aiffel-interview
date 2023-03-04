@@ -129,8 +129,8 @@ export default ForumWrite;
 
 const Container = styled.div`
   ${flex('', '', 'column')}
-  width: 700px;
-  margin-top: 120px;
+  width: 600px;
+  margin-top: 40px;
   row-gap: 35px;
 `;
 
