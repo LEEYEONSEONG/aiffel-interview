@@ -6,8 +6,6 @@ import React, {
   useState,
 } from 'react';
 
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import {
@@ -20,50 +18,31 @@ import {
   TextArea,
 } from 'components';
 
+import { usePostForumQuery } from './queries/usePostForumQuery';
+
 import { flex } from 'styles/flex';
 import { fontSize } from 'styles/mixins';
 
 const SELECTED_LIST = ['general', 'tip', 'bug', 'learn'];
 
-const SELECTED_COLOR: { [key: string]: string } = {
-  general: '#c0c0c0',
-  tip: '#f4d757',
-  bug: '#ff1357',
-  learn: '#aaecff',
-};
-
 function ForumWrite() {
-  const navigate = useNavigate();
+  const { mutate: postNewForum } = usePostForumQuery();
+
   const [inputValue, setInputValue] = useState({
     title: '',
     content: '',
   });
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedOptions, setSelectedOption] = useState('general');
+  const [selectedOption, setSelectedOption] = useState('general');
 
   const { title, content } = inputValue;
 
   //등록하기 버튼 validate
   const submitStatus = useMemo(
-    () => !!title && !!content && !!selectedOptions,
+    () => !!title && !!content && !!selectedOption,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [inputValue, selectedOptions],
+    [inputValue, selectedOption],
   );
-
-  const fetchNewForum = async () => {
-    const { data, status } = await axios.post('forum', {
-      title,
-      content,
-      isLiked: false,
-      tag: {
-        name: selectedOptions,
-        color: SELECTED_COLOR[selectedOptions],
-      },
-    });
-    if (status === 201) {
-      navigate(`/forum/${data.id}`);
-    }
-  };
 
   const handleInputValue = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -86,7 +65,7 @@ function ForumWrite() {
   };
 
   const handleConfirmBtnClick = () => {
-    fetchNewForum();
+    postNewForum({ title, content, selectedOption });
   };
 
   return (
@@ -111,7 +90,7 @@ function ForumWrite() {
             <Select.Input
               isSelect={showDropdown}
               title="selected"
-              value={selectedOptions}
+              value={selectedOption}
               onClick={() => handleDropdownClick()}
             />
           </Select>
@@ -120,7 +99,7 @@ function ForumWrite() {
           {SELECTED_LIST.map((item, idx) => (
             <Dropdown.Item
               key={`selected-${idx}`}
-              isActive={selectedOptions === item}
+              isActive={selectedOption === item}
               title="selected"
               onClick={handelSelectedOptionClick}
             >
