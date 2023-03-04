@@ -163,7 +163,7 @@ const StyledDropdown = styled(Dropdown)`
 
 const ConfirmButton = styled(Button)<{ disabled: boolean }>`
   ${flex('center', 'center')}
-  background-color: #505FED;
+  background-color: #f7cf47;
   color: #ffffff;
   border-radius: 8px;
   font-weight: 700;
