@@ -51,6 +51,7 @@ function Forum() {
       <SearchBar
         name="search"
         placeholder="검색어를 입력하세요."
+        hasRefresh
         onChange={handleSearchInputChange}
       />
       <ForumList />

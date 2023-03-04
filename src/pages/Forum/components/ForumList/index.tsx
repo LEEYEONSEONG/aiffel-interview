@@ -50,7 +50,7 @@ export default ForumList;
 const Container = styled.div`
   margin-top: 60px;
   padding-top: 20px;
-  border-top: 1px solid #dde1e6;
+  border-top: 1px solid #c0c0c0;
 `;
 
 const Forum = styled.div`
