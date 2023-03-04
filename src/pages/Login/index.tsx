@@ -9,7 +9,6 @@ import useLoginQuery from './queries/useLoginQuery';
 import validateEmail from 'utils/regExp';
 
 import { flex } from 'styles/flex';
-import { fontSize } from 'styles/mixins';
 
 function Login() {
   const { mutate: login } = useLoginQuery();
