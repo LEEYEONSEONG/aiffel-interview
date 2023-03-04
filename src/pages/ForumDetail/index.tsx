@@ -1,79 +1,58 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { BackIcon, Text } from 'components';
-import styled from 'styled-components';
 
-import { getForumDetail } from 'redux/modules/forum';
+import useGetForumDetailQuery from './queries/useGetForumDetailQuery';
+import usePatchLikeToggleQuery from './queries/usePatchLikeToggleQuery';
 
 import { flex } from 'styles/flex';
 import { fitImg } from 'styles/mixins';
-import { deleteIcon, likeIcon, likeIconActive } from 'assets';
 
-import { IRootState } from 'types/payloadTypes';
+import { deleteIcon, likeIcon, likeIconActive } from 'assets';
+import useDeleteForumQuery from './queries/useDeleteForumQuery';
 
 function ForumDetail() {
   const { id } = useParams() as { id: string };
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const { forum } = useSelector((state: IRootState) => state.forum);
-  const {
-    title,
-    content,
-    tag: { name, color },
-    isLiked,
-  } = forum;
-
-  const fetchForumDetail = async (id: string) => {
-    const { data } = await axios.get(`/forum?id=${id}`);
-    dispatch(getForumDetail(data[0]));
-  };
-
-  const handleLikeToggle = async () => {
-    const { status } = await axios.patch(`/forum/${id}`, {
-      isLiked: !isLiked,
-    });
-    if (status === 200) {
-      fetchForumDetail(id);
-    }
-  };
+  const { data, isSuccess } = useGetForumDetailQuery(id);
+  const { mutate: handleDeleteForum } = useDeleteForumQuery();
+  const { mutate: handleLikeToggle } = usePatchLikeToggleQuery();
 
   const handleDetailDelete = async () => {
     const confirm = window.confirm('정말로 삭제하시겠습니까?');
 
-    if (confirm) {
-      const { status } = await axios.delete(`/forum/${id}`);
-      if (status === 200) {
-        navigate('/forum');
-      }
-    }
+    if (confirm) return handleDeleteForum(id);
   };
-
-  useEffect(() => {
-    fetchForumDetail(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
 
   return (
     <Forum>
-      <BackIcon path="/forum" />
-      <Text.Large>{title}</Text.Large>
-      <TagBox>
-        <Tag color={color}>{name}</Tag>
-      </TagBox>
-      <Text.Medium color="#697077">{content}</Text.Medium>
-      <LikeWrap>
-        <LikeIcon onClick={() => handleLikeToggle()}>
-          <img alt="like" src={isLiked ? likeIconActive : likeIcon} />
-        </LikeIcon>
-        <DeleteIcon onClick={() => handleDetailDelete()}>
-          <img alt="delete" src={deleteIcon} />
-        </DeleteIcon>
-      </LikeWrap>
+      {isSuccess && (
+        <>
+          <BackIcon path="/forum" />
+          <Text.Large>{data[0].title}</Text.Large>
+          <TagBox>
+            <Tag color={data[0].tag.color}>{data[0].tag.name}</Tag>
+          </TagBox>
+          <Text.Medium color="#697077">{data[0].content}</Text.Medium>
+          <LikeWrap>
+            <LikeIcon
+              onClick={() => handleLikeToggle({ id, isLiked: data[0].isLiked })}
+            >
+              <img
+                alt="like"
+                src={data[0].isLiked ? likeIconActive : likeIcon}
+              />
+            </LikeIcon>
+            <DeleteIcon onClick={() => handleDetailDelete()}>
+              <img alt="delete" src={deleteIcon} />
+            </DeleteIcon>
+          </LikeWrap>
+        </>
+      )}
     </Forum>
   );
 }

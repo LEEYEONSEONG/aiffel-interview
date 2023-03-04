@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import axios from 'axios';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, SearchBar, Text } from 'components';
 import ForumList from './components/ForumList';
 
-import { getForumList } from 'redux/modules/forum';
-
 import { flex } from 'styles/flex';
+import useGetForumListQuery from './queries/useGetForumListQeury';
 
 function Forum() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
 
-  const fetchGetUserInfo = async () => {
-    const { data } = await axios.get(`/forum`);
-
-    dispatch(getForumList(data));
-  };
+  useGetForumListQuery();
 
   const handleSearchInputChange = (value: string) => {
     setSearchValue(value);
@@ -30,11 +22,6 @@ function Forum() {
   const handleAddBtnClick = () => {
     navigate('/write');
   };
-
-  useEffect(() => {
-    fetchGetUserInfo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <Container>

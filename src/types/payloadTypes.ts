@@ -5,12 +5,12 @@ export interface IRootState {
 
 export interface IAuthState {
   user: IUserInfo;
+  token: string;
 }
 
 export interface IForumState {
   forumList: IForumData[];
   total: number;
-  forum: IForumData;
 }
 
 export interface IUserInfo {
@@ -31,4 +31,15 @@ export interface IForumData {
 export interface ITag {
   name: string;
   color: string;
+}
+
+export interface INewForumParams {
+  title: string;
+  content: string;
+  selectedOption: string;
+}
+
+export interface ILikeForumParams {
+  id: string;
+  isLiked: boolean;
 }

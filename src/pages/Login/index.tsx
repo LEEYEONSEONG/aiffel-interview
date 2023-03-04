@@ -1,22 +1,17 @@
 import React, { useCallback, useState } from 'react';
 
-import axios from 'axios';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { Button, Input, Text } from 'components';
-
-import { getUserInfo } from 'redux/modules/auth';
 
 import { flex } from 'styles/flex';
 import { fontSize } from 'styles/mixins';
 
 import { validateEmail } from 'utils/regExp';
+import useLoginQuery from './queries/useLoginQuery';
 
 function Login() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { mutate: login } = useLoginQuery();
 
   const [inputValue, setInputValue] = useState({
     email: 'we.want.u@aiffel.com',
@@ -24,20 +19,6 @@ function Login() {
   });
 
   const { email, password } = inputValue;
-
-  const fetchGetUserInfo = async (email: string, password: string) => {
-    const { data } = await axios.get(
-      `/login?email=${email}&password=${password}`,
-    );
-
-    if (!data.length) return alert('아이디와 비밀번호를 확인해주세요.');
-
-    localStorage.setItem('token', 'aiffel');
-
-    dispatch(getUserInfo(data[0]));
-
-    navigate('/forum');
-  };
 
   const handleInputValue = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +34,7 @@ function Login() {
     if (!(password.length >= 10 && validateEmail(email)))
       return alert('아이디와 비밀번호를 확인해주세요.');
 
-    fetchGetUserInfo(email, password);
+    login({ email, password });
   };
 
   return (
