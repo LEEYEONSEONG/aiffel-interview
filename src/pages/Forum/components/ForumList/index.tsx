@@ -12,7 +12,7 @@ import { IRootState } from 'types/payloadTypes';
 
 function ForumList() {
   const navigate = useNavigate();
-  const { forumList } = useSelector((state: IRootState) => state.forum);
+  const { filteredList } = useSelector((state: IRootState) => state.forum);
 
   const handleForumClick = (id: number) => {
     navigate(`/forum/${id}`);
@@ -20,8 +20,8 @@ function ForumList() {
 
   return (
     <Container>
-      {forumList.length ? (
-        forumList.map((forum) => {
+      {filteredList.length ? (
+        filteredList.map((forum) => {
           const {
             id,
             title,

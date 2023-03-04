@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Button, SearchBar, Text } from 'components';
+import { Button, Pagination, SearchBar, Text } from 'components';
 import ForumList from './components/ForumList';
 
+import { getSearchList } from 'redux/modules/forum';
+import useGetForumListQuery from './queries/useGetForumListQuery';
+import useGetPageListQuery from './queries/useGetPageListQuery';
+
 import { flex } from 'styles/flex';
-import useGetForumListQuery from './queries/useGetForumListQeury';
+
+import { IRootState } from 'types/payloadTypes';
 
 function Forum() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const { total } = useSelector((state: IRootState) => state.forum);
 
   useGetForumListQuery();
+  const { mutate } = useGetPageListQuery();
+
+  const handlePageClick = (page: number) => {
+    mutate({ value: searchValue, currentPage: page });
+    setCurrentPage(page);
+  };
 
   const handleSearchInputChange = (value: string) => {
     setSearchValue(value);
@@ -22,6 +37,10 @@ function Forum() {
   const handleAddBtnClick = () => {
     navigate('/write');
   };
+
+  useEffect(() => {
+    dispatch(getSearchList(searchValue));
+  }, [searchValue]);
 
   return (
     <Container>
@@ -35,6 +54,13 @@ function Forum() {
         onChange={handleSearchInputChange}
       />
       <ForumList />
+      <PaginationSection>
+        <Pagination
+          total={total}
+          currentPage={currentPage}
+          onGetPage={handlePageClick}
+        />
+      </PaginationSection>
     </Container>
   );
 }
@@ -53,10 +79,16 @@ const Header = styled.div`
 
 const AddButton = styled(Button)`
   ${flex('center', 'center')}
-  background-color: #505FED;
+  background-color: #f7cf47;
   color: #ffffff;
   width: 110px;
   border-radius: 8px;
   font-weight: 700;
   font-size: 18px;
+`;
+
+const PaginationSection = styled.section`
+  display: flex;
+  flex: 1;
+  justify-content: center;
 `;
