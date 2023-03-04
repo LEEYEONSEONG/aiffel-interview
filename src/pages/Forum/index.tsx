@@ -46,7 +46,11 @@ function Forum() {
     <Container>
       <Header>
         <Text.Large weight={700}>묻고 답하기</Text.Large>
-        <AddButton onClick={() => handleAddBtnClick()}>새로운 질문</AddButton>
+        <AddButton onClick={() => handleAddBtnClick()}>
+          <Text.Small weight={700} color="#ffffff">
+            새로운 질문
+          </Text.Small>
+        </AddButton>
       </Header>
       <SearchBar
         name="search"
@@ -55,13 +59,15 @@ function Forum() {
         onChange={handleSearchInputChange}
       />
       <ForumList />
-      <PaginationSection>
-        <Pagination
-          total={total}
-          currentPage={currentPage}
-          onGetPage={handlePageClick}
-        />
-      </PaginationSection>
+      {total > 5 && (
+        <PaginationSection>
+          <Pagination
+            total={total}
+            currentPage={currentPage}
+            onGetPage={handlePageClick}
+          />
+        </PaginationSection>
+      )}
     </Container>
   );
 }
@@ -69,8 +75,8 @@ function Forum() {
 export default Forum;
 
 const Container = styled.div`
-  width: 1000px;
-  margin-top: 84px;
+  width: 600px;
+  margin: 40px 0;
 `;
 
 const Header = styled.div`
@@ -81,11 +87,9 @@ const Header = styled.div`
 const AddButton = styled(Button)`
   ${flex('center', 'center')}
   background-color: #f7cf47;
-  color: #ffffff;
   width: 110px;
   border-radius: 8px;
-  font-weight: 700;
-  font-size: 18px;
+  padding: 10px 0;
 `;
 
 const PaginationSection = styled.section`
