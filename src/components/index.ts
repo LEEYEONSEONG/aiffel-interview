@@ -5,3 +5,4 @@ export { default as Input } from './Input';
 export { default as SearchBar } from './SearchBar';
 export { default as Text } from './Text';
 export { default as BackIcon } from './BackIcon';
+export { default as Label } from './Label';
