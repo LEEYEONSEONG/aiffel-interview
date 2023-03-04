@@ -9,8 +9,8 @@ export const fitImg = css`
 `;
 
 export const fontSize = {
-  large: '32px',
-  medium: '22px',
-  regular: '18px',
-  small: '16px',
+  large: '28px',
+  medium: '18px',
+  regular: '16px',
+  small: '14px',
 };
