@@ -187,7 +187,13 @@ Jira를 이용해 할 일을 관리했습니다.
 
 # 컴포넌트를 만들 때 고려한 내용
 
-공통 컴포넌트를 만들 때 `합성 컴포넌트 패턴`을 활용
+- 아토믹 디자인 패턴 [(참고글)](https://fe-developers.kakaoent.com/2022/220505-how-page-part-use-atomic-design-system/)
+
+<img width="518" alt="image" src="https://user-images.githubusercontent.com/98295004/214600685-48d2ab23-2b7b-4215-9a6d-a7ab6d0067fe.png">
+
+<br />
+
+공통 컴포넌트를 만들 때 `Atomic Deign Pattern`와 `합성 컴포넌트 패턴` 을 활용했습니다.
 
 - 서브 컴포넌트로 분해한 후, 필요한 것만 조합해서 사용
 
