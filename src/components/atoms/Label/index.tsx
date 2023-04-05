@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
-import Text from 'components/Text';
+import { Text } from 'components/atoms';
 
 interface ILabelProps extends HTMLAttributes<HTMLLabelElement> {
   children: ReactNode;

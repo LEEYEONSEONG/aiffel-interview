@@ -8,7 +8,7 @@ import {
 import { useSelector } from 'react-redux';
 
 import { Login, Forum, ForumWrite, ForumDetail } from 'pages';
-import { Layout, Header } from 'components';
+import { Layout, Header } from 'components/organisms';
 
 import { IRootState } from 'types/payloadTypes';
 

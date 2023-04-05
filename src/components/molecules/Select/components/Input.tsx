@@ -2,7 +2,7 @@ import { MouseEvent } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import Input from 'components/Input';
+import { Input } from 'components/atoms';
 
 import { selectIcon } from 'assets';
 
