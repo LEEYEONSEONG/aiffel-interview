@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { Button } from 'components';
+import { Button } from 'components/atoms';
 
 import formatPageArray from 'utils/formatPageArray';
 

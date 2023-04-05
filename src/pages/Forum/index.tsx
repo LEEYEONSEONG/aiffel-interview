@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Button, Pagination, SearchBar, Text } from 'components';
-import ForumList from './components/ForumList';
+import { Button, Text } from 'components/atoms';
+import { SearchBar } from 'components/molecules';
+import { Pagination } from 'components/organisms';
 
 import { getSearchList } from 'redux/modules/forum';
 import useGetForumListQuery from './queries/useGetForumListQuery';
@@ -14,6 +15,7 @@ import useGetPageListQuery from './queries/useGetPageListQuery';
 import { flex } from 'styles/flex';
 
 import { IRootState } from 'types/payloadTypes';
+import { ForumList } from 'components/organisms';
 
 function Forum() {
   const dispatch = useDispatch();

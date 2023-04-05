@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Button, Input, Text } from 'components';
+import { Button, Input, Text } from 'components/atoms';
 
 import useLoginQuery from './queries/useLoginQuery';
 

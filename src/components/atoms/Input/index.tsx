@@ -1,7 +1,7 @@
 import Layout from './components/Layout';
 import Value from './components/Value';
 import Right from './components/Right';
-import Label from 'components/Label';
+import Label from 'components/atoms/Label';
 
 const Input = Object.assign(Layout, {
   Label,

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Text from 'components/Text';
+import { Text } from 'components/atoms';
 
 import { aiffelLogo, profile } from 'assets';
 

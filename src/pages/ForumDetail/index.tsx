@@ -3,7 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
-import { BackIcon, Text } from 'components';
+import { Text } from 'components/atoms';
+import { BackIcon } from 'components/molecules';
 
 import useDeleteForumQuery from './queries/useDeleteForumQuery';
 import useGetForumDetailQuery from './queries/useGetForumDetailQuery';

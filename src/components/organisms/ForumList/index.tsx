@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Text from 'components/Text';
+import { Text } from 'components/atoms';
 
 import { flex } from 'styles/flex';
 

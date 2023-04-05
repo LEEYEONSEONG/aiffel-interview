@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Input from 'components/Input';
+import { Input } from 'components/atoms';
 
 import { refreshIcon, searchIcon, searchIconActive } from 'assets';
 

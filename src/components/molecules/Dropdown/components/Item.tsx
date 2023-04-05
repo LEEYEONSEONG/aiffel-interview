@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode, MouseEvent } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import Text from 'components/Text';
+import { Text } from 'components/atoms';
 
 interface IItemProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode;

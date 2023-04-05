@@ -2,15 +2,8 @@ import { ChangeEvent, MouseEvent, useCallback, useMemo, useState } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import {
-  BackIcon,
-  Button,
-  Dropdown,
-  Input,
-  Text,
-  Select,
-  TextArea,
-} from 'components';
+import { Button, Input, Text, TextArea } from 'components/atoms';
+import { BackIcon, Dropdown, Select } from 'components/molecules';
 
 import { usePostForumQuery } from './queries/usePostForumQuery';
 
